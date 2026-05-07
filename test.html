@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="pdfTemplate.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF</title>
+</head>
+
+<body>
+    <div class="page">
+
+        <div class="header">
+
+            <img src="icons\Logo.jpg" height="150" width="auto" style="text-align: left;">
+            <div style="display: flex; justify-content: flex-end">
+                <p style="text-align: left">
+                    Justin Völk <br>
+                    Ötlingerstraße 35 <br>
+                    73230 Kirchheim unter Teck <br>
+                    Deutschland <br>
+                    USt-IdNr.: DE369519633 <br>
+                    Telefonnummer: 0049-1777513827 <br>
+                </p>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <h2>Rechnung {{order}}</h2>
+            <p id=adress>
+                {{name}} <br>
+                {{street}} <br>
+                {{city}} <br>
+                {{country}} <br>
+            </p>
+        </div>
+
+        <table id="inventar" style="width: 100%;" >
+            <tr>
+                <th style="width: 10%;">Anzahl</th>
+                <th>Artikel</th>
+                <th>Preis</th>
+            </tr>
+        
+        </table>
+
+       
+
+    </div>
+    <script src="html2pdf.bundle.js"></script>
+    <script src="test.js"></script>
+   
+</body>

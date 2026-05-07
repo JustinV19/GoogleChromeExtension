@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Meine erste Extension",
+  "version": "1.0",
+  "description":"Meine Eigene Rechnung erstell Extension",
+  "icons":{
+    "128": "icons/Lacrima(Playmat).png"
+  },
+   "permissions": [
+    "storage"
+  ],
+  "content_scripts":[
+    {
+      "matches": ["https://www.cardmarket.com/de/YuGiOh/Orders/*"],
+      "js":["Content.js"] 
+      
+    }
+  ],
+  
+   "web_accessible_resources": [
+    {
+      "resources": [
+        "test.html",
+        "test.js",
+        "pdfTemplate.css",
+        "icons/*"
+      ],
+
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
