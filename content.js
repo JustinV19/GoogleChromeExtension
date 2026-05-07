@@ -59,10 +59,15 @@ const Person = {
 
     shippingMethod: {
 
-        method: document.querySelectorAll(".col-12.col-md-8.col-lg-9 span")[1].textContent,
-        weight: document.querySelector(".ms-1.text-muted").textContent,
+        method: document.querySelectorAll(".col-12.col-md-8.col-lg-9 span")[1].textContent, // Kompaktbrief + Einschreiben EINWURF
+        weight: document.querySelector(".ms-1.text-muted").textContent, // (max. 50g)
+        shippingType: document.querySelector(".col-12.col-md-8.col-lg-9").querySelectorAll('span')[5]?.innerText.trim(), //Versand ohne Sendungsverfolgung
+        trusteeLabel: document.querySelector(".col-12.col-md-8.col-lg-9").querySelectorAll('span')[6]?.innerText.trim(),
+        trusteeAvailable: document.querySelector(".col-12.col-md-8.col-lg-9").querySelectorAll('span')[8]?.innerText.trim()
+
+
         // Als Array adden bzw ausdrucken macht mehr sinn als es zu mappen zu probieren
-        
+
     }
 
 
@@ -97,10 +102,10 @@ const Person = {
 
 }*/
 
+   
+
 //<--------------------------Probe---------------------------------->
 button.onclick = () => {
-
-
 
     chrome.storage.local.set({
 
@@ -116,10 +121,10 @@ button.onclick = () => {
             "_blank"
         );
     })
-    
-    
 
-    
+
+
+
 
 };
 

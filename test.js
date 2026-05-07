@@ -57,7 +57,7 @@ chrome.storage.local.get(
 
         row.innerHTML = `
             <td><b> ${data.person.summary.articleCount} </b></td>
-            <td><b> ${data.person.summary.shippingPrice} </b></td>
+            <td><b> ${data.person.shippingMethod.shippingType}  ${data.person.shippingMethod.trusteeLabel} | ${data.person.shippingMethod.trusteeAvailable} </b></td>
             <td><b>${data.person.summary.totalPrice} €</b></td>
 
         `;
