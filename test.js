@@ -56,18 +56,46 @@ chrome.storage.local.get(
         const row = document.createElement("tr");
 
         row.innerHTML = `
-            <td><b> ${data.person.summary.articleCount} </b></td>
-            <td><b> ${data.person.shippingMethod.shippingType}  ${data.person.shippingMethod.trusteeLabel} | ${data.person.shippingMethod.trusteeAvailable} </b></td>
-            <td><b>${data.person.summary.totalPrice} €</b></td>
-
+            <td><b> ${data.person.summary.articleCount}</b></td>
+            <td><b>
+                ${data.person.shippingMethod.method} ${data.person.shippingMethod.weight} </br>
+                ${data.person.shippingMethod.shippingType}  ${data.person.shippingMethod.trusteeLabel} | ${data.person.shippingMethod.trusteeAvailable}
+            </b></td>
+            <td><b> ${data.person.summary.shippingPrice} € </b></td>            
         `;
         inventar.appendChild(row);
-+
+
+        const row2 = document.createElement("tr");
+
+        row2.innerHTML = `
+            <td colspan="2"><b>
+                MWSt. (0%) - Kleinunternehmer gemäß §19 UStG </br>
+                Netto
+            </b></td>
+            <td><b>
+                0.00 €</br> 
+                ${data.person.summary.totalPrice} € 
+            </b></td>            
+        `;
+        inventar.appendChild(row2);
+
+        const row3 = document.createElement("tr");
+
+        row3.innerHTML = `
+            <td colspan="2"><b>
+                Gesamt
+            </b></td>
+            <td><b>
+                ${data.person.summary.totalPrice} € 
+            </b></td>            
+        `;
+        inventar.appendChild(row3);
 
 
-        // Timeout damit die Seite genug zeit hat um zu Laden
 
-        setTimeout(() => {
+        // Timeout damit die Seite genug zeit hat um zu Laden und dann als PDF drucken
+
+       /* setTimeout(() => {
 
             html2pdf()
 
@@ -98,7 +126,7 @@ chrome.storage.local.get(
 
                 .save();
 
-        }, 300);
+        }, 300);*/
     }
 
 );
