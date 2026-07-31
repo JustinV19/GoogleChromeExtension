@@ -46,7 +46,7 @@ chrome.storage.local.get(
             row.innerHTML = `
                 <td>${card.amount}</td>
                 <td>${card.name}</td>
-                <td>${card.price} €</td>
+                <td>${card.price}</td>
             `;
 
             inventar.appendChild(row); // Die erstellten Elemente werden damit eingefügt und zwar an die geaddete ID
@@ -56,14 +56,13 @@ chrome.storage.local.get(
         const row = document.createElement("tr");
 
         row.innerHTML = `
-            <td><b> ${data.person.summary.articleCount}</b></td>
-            <td><b>
+            <td colspan ="2">
                 ${data.person.shippingMethod.method} ${data.person.shippingMethod.weight} </br>
                 ${data.person.shippingMethod.shippingType}  ${data.person.shippingMethod.trusteeLabel} | ${data.person.shippingMethod.trusteeAvailable}
-            </b></td>
-            <td><b> ${data.person.summary.shippingPrice} € </b></td>            
+            </td>
+            <td><b> ${data.person.summary.shippingPrice} </b></td>            
         `;
-        inventar.appendChild(row);
+        inventar.appendChild(row); // fügt das als letzte Element hinzu wie eine Liste
 
         const row2 = document.createElement("tr");
 
@@ -73,10 +72,11 @@ chrome.storage.local.get(
                 Netto
             </b></td>
             <td><b>
-                0.00 €</br> 
-                ${data.person.summary.totalPrice} € 
+                0,00 €</br> 
+                ${data.person.summary.totalPrice} 
             </b></td>            
         `;
+        row2.style.backgroundColor = "#f5f5f5";
         inventar.appendChild(row2);
 
         const row3 = document.createElement("tr");
@@ -86,47 +86,70 @@ chrome.storage.local.get(
                 Gesamt
             </b></td>
             <td><b>
-                ${data.person.summary.totalPrice} € 
+                ${data.person.summary.totalPrice} 
             </b></td>            
         `;
+        row3.style.backgroundColor = "#d3d3d3";
         inventar.appendChild(row3);
+
+
+        let name = data.person.name.replaceAll(" ", "_") + "_" + data.verkaufsNr;
+
+        // Rechnung aus data.invoiceData erstellen
+
+        const options = {
+            margin: 0,
+            filename: name,
+            image: { type: "jpeg", quality: 1 },
+            html2canvas: { scale: 3 },
+            jsPDF: {
+                unit: "mm",
+                format: "a4",
+                orientation: "portrait"
+            }
+        };
+
+        html2pdf().set(options).from(document.body).save().then(() => {
+            window.close();
+        });
+
 
 
 
         // Timeout damit die Seite genug zeit hat um zu Laden und dann als PDF drucken
 
-       /* setTimeout(() => {
-
-            html2pdf()
-
-                .from(document.body)
-
-                .set({
-                    margin: [20, 5, 20, 5],  // Oben Links Unten Rechts
-
-                    filename:
-                        `${data.person.name}_${data.verkaufsNr}.pdf`,
-
-                    image: {
-                        type: 'jpeg',
-                        quality: 1
-                    },
-
-                    html2canvas: {
-                        scale: 4
-                    },
-
-                    jsPDF: {
-                        unit: 'mm',
-                        format: 'a4',
-                        orientation: 'portrait'
-                    }
-
-                })
-
-                .save();
-
-        }, 300);*/
+        /* setTimeout(() => {
+ 
+             html2pdf()
+ 
+                 .from(document.body)
+ 
+                 .set({
+                     margin: [20, 5, 20, 5],  // Oben Links Unten Rechts
+ 
+                     filename:
+                         `${data.person.name}_${data.verkaufsNr}.pdf`,
+ 
+                     image: {
+                         type: 'jpeg',
+                         quality: 1
+                     },
+ 
+                     html2canvas: {
+                         scale: 4
+                     },
+ 
+                     jsPDF: {
+                         unit: 'mm',
+                         format: 'a4',
+                         orientation: 'portrait'
+                     }
+ 
+                 })
+ 
+                 .save();
+ 
+         }, 300);*/
     }
 
 );

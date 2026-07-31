@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Meine erste Extension",
+  "name": "RechnungerstellerFürCardmarket",
   "version": "1.0",
-  "description":"Meine Eigene Rechnung erstell Extension",
+  "description":"Eigene Rechnungen erstellen, direkt und unkompliziert. Durch ein Knopfdruck",
   "icons":{
     "128": "icons/Lacrima(Playmat).png"
   },
@@ -12,7 +12,7 @@
   "content_scripts":[
     {
       "matches": ["https://www.cardmarket.com/de/YuGiOh/Orders/*"],
-      "js":["Content.js"] 
+      "js":["html2pdf.bundle.js","content.js"]
       
     }
   ],

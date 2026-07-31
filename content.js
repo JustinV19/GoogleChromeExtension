@@ -1,4 +1,4 @@
-const button = document.createElement("button"); // erstellt ein Button
+const button = document.createElement("button"); // erstellt ein Button für die Cardmarket webseite
 const target = document.querySelector(".w-100.d-grid") // holt das Element in dem ich dann mein Button einfüge
 // wenn es mehrere Klassen hat dann macht es ein. kein leerzeichen, auf der Seite steht ein Leerzeichen
 
@@ -28,13 +28,14 @@ rows.forEach(row => {
         rarity: row.dataset.rarity,
         condition: row.dataset.condition,
         language: row.dataset.language,
-        price: row.dataset.price,
+        price: row.querySelector("td.price")?.textContent, // Wegen der Formatierung, lese ich es direkt aus der Zeile aus.
         comment: row.dataset.comment
     })
 
 });
 
 //<----------------------Person--------------------------------->
+// ist ein Objekt
 const Person = {
 
     name: document.querySelector(".Name").textContent,
@@ -53,8 +54,8 @@ const Person = {
 
         articleCount: document.querySelector(".summary").dataset.articleCount,
         itemValue: document.querySelector(".summary").dataset.itemValue,
-        shippingPrice: document.querySelector(".summary").dataset.shippingPrice,
-        totalPrice: document.querySelector(".summary").dataset.totalPrice
+        shippingPrice: document.querySelector(".summary").querySelector(".shipping-price").textContent,
+        totalPrice: document.querySelector(".summary").querySelector(".strong").textContent
     },
 
     shippingMethod: {
@@ -78,8 +79,9 @@ const Person = {
 
 
 //<-------------------------Button---------------------------------->
+// erstellt eine JSON-Datei und downloaded die Datei, der Name wird richtig geparsed
 
-/*button.onclick = () => {
+button.onclick = () => {
 
     const file = new Blob([JSON.stringify(Person, null, 2)], {
         type: "application/json"
@@ -95,17 +97,14 @@ const Person = {
     let name = elementName.innerText + "_" + verkaufsNr;
     name = name.replace(" ", "_");
 
-    const umwandlung = document.createElement("a"); // das a HTMl-Element hat die fähigkeit downloadas auszulösen
+
+    //<--JSON->
+    /*const umwandlung = document.createElement("a"); // das a HTMl-Element hat die fähigkeit downloadas auszulösen
     umwandlung.href = url;
     umwandlung.download = name + ".json";
-    umwandlung.click() // damit der download ausgelöst wird 
+    umwandlung.click() // damit der download ausgelöst wird*/ 
 
-}*/
 
-   
-
-//<--------------------------Probe---------------------------------->
-button.onclick = () => {
 
     chrome.storage.local.set({
 
@@ -115,18 +114,44 @@ button.onclick = () => {
         }
 
     },
-    () =>{
-        window.open(
-            chrome.runtime.getURL("test.html"),
-            "_blank"
-        );
-    })
+        () => {
+            window.open(
+                chrome.runtime.getURL("test.html"),
+                "_blank"
+            );
+            
+        }
+    )
+    
+    
+    
+}
+
+
+
+//<--------------------------Probe---------------------------------->
+/*button.onclick = () => {
+
+    chrome.storage.local.set({
+
+        invoiceData: {
+            person: Person,
+            verkaufsNr: verkaufsNr
+        }
+
+    },
+        () => {
+            window.open(
+                chrome.runtime.getURL("test.html"),
+                "_blank"
+            );
+        })
 
 
 
 
 
-};
+};*/
 
 
 target.appendChild(button);
