@@ -79,7 +79,7 @@ const Person = {
 
 
 //<-------------------------Button---------------------------------->
-// erstellt eine JSON-Datei und downloaded die Datei, der Name wird richtig geparsed
+// erstellt eine JSON-Datei oder Pdf und downloaded die Datei, der Name wird richtig geparsed
 
 button.onclick = () => {
 
@@ -100,7 +100,6 @@ button.onclick = () => {
     chrome.storage.local.get(["ausgabe"], (result) => {
         const vergleichAuswahl = result.ausgabe;
 
-        console.log(vergleichAuswahl);
 
         if (vergleichAuswahl === "JSON") {
             const umwandlung = document.createElement("a"); // das a HTMl-Element hat die fähigkeit downloadas auszulösen
@@ -118,7 +117,7 @@ button.onclick = () => {
             },
                 () => {
                     window.open(
-                        chrome.runtime.getURL("pdfTemplate.html"),
+                        chrome.runtime.getURL("pdfTemplate.html"),    // es öffnet die PDFTemplate dort wird dann der pdfTemplate javascript getriggert
                         "_blank"
                     );
 

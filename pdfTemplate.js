@@ -1,3 +1,48 @@
+chrome.storage.local.get(["gewerbeName", "strasse", "hausNr", "postleiZahl", "stadt", "land", "umsatzsteuerNr", "extra","logo"], (result) => {
+    let html = document.body.innerHTML;
+
+    html = html.replaceAll(
+        "{{Gewerbename}}",
+        result.gewerbeName // kein .value da ich es schon als Value abgespeichert habe
+    );
+     html = html.replaceAll(
+        "{{Straße}}",
+        result.strasse 
+    );
+
+     html = html.replaceAll(
+        "{{Haus-Nr}}",
+        result.hausNr
+    );
+    html = html.replaceAll(
+        "{{Postleizahl}}",
+        result.postleiZahl
+    );
+    html = html.replaceAll(
+        "{{Stadt}}",
+        result.stadt
+    );
+    html = html.replaceAll(
+        "{{Land}}",
+        result.land
+    );
+    html = html.replaceAll(
+        "{{Umsatzsteuer-Nr}}",
+        result.umsatzsteuerNr
+    );
+    html = html.replaceAll(
+        "{{Extra}}",
+        result.extra
+    );
+   
+    document.body.innerHTML = html // um die replaces wieder reinzusetzen
+
+    const logoHtml = document.getElementById("logoId") // nach dem die Elemente ersetzt wurden hol ich mir die logo stelle um das bild zu ersetzen.
+    logoHtml.src = result.logo;
+
+    
+});
+
 chrome.storage.local.get(
     "invoiceData",
     (result) => {
@@ -110,46 +155,14 @@ chrome.storage.local.get(
         };
 
         html2pdf().set(options).from(document.body).save().then(() => {
-            window.close();
+        //window.close();
         });
 
-
-
-
-        // Timeout damit die Seite genug zeit hat um zu Laden und dann als PDF drucken.
-        // Habe ich anders gelöst, wird in einem Thread alles verschachtelt gemacht daher. 
-        /* setTimeout(() => {
- 
-             html2pdf()
- 
-                 .from(document.body)
- 
-                 .set({
-                     margin: [20, 5, 20, 5],  // Oben Links Unten Rechts
- 
-                     filename:
-                         `${data.person.name}_${data.verkaufsNr}.pdf`,
- 
-                     image: {
-                         type: 'jpeg',
-                         quality: 1
-                     },
- 
-                     html2canvas: {
-                         scale: 4
-                     },
- 
-                     jsPDF: {
-                         unit: 'mm',
-                         format: 'a4',
-                         orientation: 'portrait'
-                     }
- 
-                 })
- 
-                 .save();
- 
-         }, 300);*/
     }
 
 );
+
+
+    
+
+
