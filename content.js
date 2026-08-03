@@ -118,7 +118,7 @@ button.onclick = () => {
             },
                 () => {
                     window.open(
-                        chrome.runtime.getURL("test.html"),
+                        chrome.runtime.getURL("pdfTemplate.html"),
                         "_blank"
                     );
 

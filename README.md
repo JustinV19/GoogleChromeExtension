@@ -21,3 +21,5 @@ npm start
 - Dashboard
 
 ## Lizenz
+
+- Ich will noch bilder hinzufügen das geht

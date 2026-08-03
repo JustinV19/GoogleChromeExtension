@@ -116,8 +116,8 @@ chrome.storage.local.get(
 
 
 
-        // Timeout damit die Seite genug zeit hat um zu Laden und dann als PDF drucken
-
+        // Timeout damit die Seite genug zeit hat um zu Laden und dann als PDF drucken.
+        // Habe ich anders gelöst, wird in einem Thread alles verschachtelt gemacht daher. 
         /* setTimeout(() => {
  
              html2pdf()
