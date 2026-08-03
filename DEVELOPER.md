@@ -5,7 +5,7 @@
 Erstellt eine Html dokument, in der dann die daten von der Cardmarket Webseite eingefügt werden um daraus dann eine Rechnung zu erstellen.
 
 **test.js**
-Ist eine Javascript dateie, die dazu dient die Elemente in der Html-Datei durch die Daten aus der Cardmarket Webseite zu ersetzen und dynamisch die Tabellen zu erstellen die dann die Artikel der Bestellung beinhalten.
+Ist eine Javascript dateie, die dazu dient die Elemente in der Html-Datei durch die Daten aus der Cardmarket Webseite zu ersetzen und dynamisch die Tabellen zu erstellen die dann die Artikel der Bestellung beinhalten. Dort wird auch die PDF erstellt
 
 
 **manifest.json** 
@@ -21,9 +21,13 @@ Erstellt den Style der Html-Seite und macht die A4 tauglich für die Rechnung.
 **html2pdf.bundle.js**
 Sorgt dafür das die Html-Seite die dynamisch erstellt wurde, direkt zur PDF-Datei konvertiert und downloaded. Sorgt dafür das keine Abfrage getätigt wird, habe ich aus einer Github Repository.
 
+# Features
+- Erstellt eine HTML-Rechnung 
+- Wandelt die Rechnung in eine PDF um 
+- Kann aber auch die Rechnung in eine JSON-Datei umwandeln
 
 # GoogleChromeExtension Ziele
 Für mein eigenes Gewerbe um Automatisch Rechnungen zu erstellen
 Schritt 1 Attribute/Werte von der Website in einer JSON datei abspeichern.| ✅
-Schritt 2 Rechnung in einer PDF konfigurieren und abspeichern |🚧(In Progress)
+Schritt 2 Rechnung in einer PDF konfigurieren und abspeichern |✅
 Schritt 3 Rechnung in E-Rechnung umwandeln bzw direkt als E-Rechnung abspeichern (Standard)| (Bevorstehend) 

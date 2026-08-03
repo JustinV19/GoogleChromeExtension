@@ -97,34 +97,44 @@ button.onclick = () => {
     let name = elementName.innerText + "_" + verkaufsNr;
     name = name.replace(" ", "_");
 
+    chrome.storage.local.get(["ausgabe"], (result) => {
+        const vergleichAuswahl = result.ausgabe;
 
-    //<--JSON->
-    /*const umwandlung = document.createElement("a"); // das a HTMl-Element hat die fähigkeit downloadas auszulösen
-    umwandlung.href = url;
-    umwandlung.download = name + ".json";
-    umwandlung.click() // damit der download ausgelöst wird*/ 
+        console.log(vergleichAuswahl);
+
+        if (vergleichAuswahl === "JSON") {
+            const umwandlung = document.createElement("a"); // das a HTMl-Element hat die fähigkeit downloadas auszulösen
+            umwandlung.href = url;
+            umwandlung.download = name + ".json";
+            umwandlung.click() // damit der download ausgelöst wird
+        } else if (vergleichAuswahl === "PDF") {
+            chrome.storage.local.set({
+
+                invoiceData: {
+                    person: Person,
+                    verkaufsNr: verkaufsNr
+                }
+
+            },
+                () => {
+                    window.open(
+                        chrome.runtime.getURL("test.html"),
+                        "_blank"
+                    );
+
+                }
+            )
+        }else{
+            alert("Es wurde keine Auswahl getroffen, in welchem Format es gespeichert werden soll");
+            return;
+        };
+
+    });
 
 
 
-    chrome.storage.local.set({
 
-        invoiceData: {
-            person: Person,
-            verkaufsNr: verkaufsNr
-        }
 
-    },
-        () => {
-            window.open(
-                chrome.runtime.getURL("test.html"),
-                "_blank"
-            );
-            
-        }
-    )
-    
-    
-    
 }
 
 

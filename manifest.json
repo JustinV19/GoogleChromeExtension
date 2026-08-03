@@ -3,6 +3,9 @@
   "name": "RechnungerstellerFürCardmarket",
   "version": "1.0",
   "description":"Eigene Rechnungen erstellen, direkt und unkompliziert. Durch ein Knopfdruck",
+  "action":{
+    "default_popup": "popup.html"
+  },
   "icons":{
     "128": "icons/Lacrima(Playmat).png"
   },
