@@ -23,8 +23,8 @@
    "web_accessible_resources": [
     {
       "resources": [
-        "test.html",
-        "test.js",
+        "pdfTemplate.html",
+        "pdfTemplate.js",
         "pdfTemplate.css",
         "icons/*"
       ],
