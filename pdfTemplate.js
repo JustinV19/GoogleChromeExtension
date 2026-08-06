@@ -81,7 +81,7 @@ chrome.storage.local.get(
 
         // Tabelle befüllen Inventar
         const inventar =
-            document.getElementById("inventar"); // Zeigt auf Tabelle mit der ID
+            document.getElementById("inventarBody"); // Zeigt auf Tabellenbody mit der ID
 
         data.person.cards.forEach(card => {
 

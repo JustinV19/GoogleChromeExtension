@@ -12,10 +12,10 @@
     <div class="page">
 
         <div class="header">
-            
-            <img src="" height="150" width="auto" style="text-align: left;" id = logoId>
+
+            <img src="" height="150" width="auto" style="text-align: left;" id=logoId>
             <div style="display: flex; justify-content: flex-end">
-                <p style="text-align: left" >
+                <p style="text-align: left">
                     {{Gewerbename}} <br>
                     {{Straße}} {{Haus-Nr}} <br>
                     {{Postleizahl}} {{Stadt}} <br>
@@ -37,19 +37,28 @@
             </p>
         </div>
 
-        <table id="inventar" style="width: 100%;" >
-            <tr>
-                <th style="width: 10%;">Anzahl</th>
-                <th>Artikel</th>
-                <th>Preis</th>
-            </tr>
-        
-        </table>
 
-       
+        <div class = "table-container">
+            <table id="inventar" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">Anzahl</th>
+                        <th>Artikel</th>
+                        <th>Preis</th>
+                    </tr>
+                </thead>
+                <tbody id="inventarBody">
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
 
     </div>
     <script src="html2pdf.bundle.js"></script>
     <script src="pdfTemplate.js"></script>
-   
+
 </body>

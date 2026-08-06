@@ -21,12 +21,13 @@ body {
 
 /* A4 PAGE */
 .page {
-    width: 210mm;
-    min-height: auto;
+  width: 210mm;
+  min-height: auto;
 
-    padding: 15mm 15mm 20mm 15mm;;
+  padding: 15mm 15mm 20mm 15mm;
+  
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 
 
   background: white;
@@ -94,8 +95,8 @@ p {
 }
 
 tr {
-    break-inside: avoid;
-    page-break-inside: avoid;
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
 
 /* TABLE */
@@ -103,7 +104,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 5mm;
-  
+
 }
 
 th,
@@ -146,7 +147,17 @@ th {
   color: #666;
 }
 
-/* PRINT OPTIMIZATION */
+
+
+/*
+  @media print ist ein media query in Css, damit werden CSS - regeln für das ausdrucken definiert
+  Nur für das Ausdrucken und zwar z,b PDF 
+
+  es gibt auch @medai <Medientyp> 
+  - @media screen nur das anzeigen auf bildschirmen
+  
+
+*/
 @media print {
 
   body {
@@ -165,8 +176,22 @@ th {
     break-inside: avoid;
   }
 
+  thead {
+    display: table-header-group;
+  }
+
+  tfoot {
+    display: table-footer-group;
+  }
+
+  tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
 
   .no-print {
     display: none;
   }
+
 }

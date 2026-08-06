@@ -20,6 +20,7 @@ zur verfügung zu stellen. Erstellt den Button für die Website
 
 **html2pdf.bundle.js**
 Sorgt dafür das die Html-Seite die dynamisch erstellt wurde, direkt zur PDF-Datei konvertiert und downloaded. Sorgt dafür das keine Abfrage getätigt wird, habe ich aus einer Github Repository.
+Macht aber nur ein screenshot und fügt es in die PDF ein deswegen werden alle Css media print settings nutzlos.
 
 **popup.html**
 Ist der Popup das Angezeigt wird wenn man bei der Extension auf den Icon Klickt.
@@ -40,3 +41,14 @@ Für mein eigenes Gewerbe um Automatisch Rechnungen zu erstellen
 Schritt 1 Attribute/Werte von der Website in einer JSON datei abspeichern.| ✅
 Schritt 2 Rechnung in einer PDF konfigurieren und abspeichern |✅
 Schritt 3 Rechnung in E-Rechnung umwandeln bzw direkt als E-Rechnung abspeichern (Standard)| (Bevorstehend) 
+
+# Notizen
+
+## Popupdesign
+- Extra größer eingaben mit zeilen umbruch ermöglichen, aber beschränkt
+
+## Rechnungsdesign
+- Rechnungsnummer hinzufügen
+- Rechnungsdatum hinzufügen
+- Bestelldatum hinzufügen (an dem Tag an dem die Bestellung aufgegeben wurde)
+- Leistungsdatum hinzufügen (Datum an dem die Lieferung angekommen ist)
