@@ -49,6 +49,15 @@ Schritt 3 Rechnung in E-Rechnung umwandeln bzw direkt als E-Rechnung abspeichern
 
 ## Rechnungsdesign
 - Rechnungsnummer hinzufügen
-- Rechnungsdatum hinzufügen
-- Bestelldatum hinzufügen (an dem Tag an dem die Bestellung aufgegeben wurde)
-- Leistungsdatum hinzufügen (Datum an dem die Lieferung angekommen ist)
+- Rechnungsdatum hinzufügen|✅
+- Bestelldatum hinzufügen (an dem Tag an dem die Bestellung aufgegeben wurde)|✅
+- Leistungsdatum hinzufügen (Datum an dem die Lieferung angekommen ist)|✅
+- Setnummer hinzufügen|✅
+- Sprache hinzufügen|✅
+- Zustand hinzufügen|✅
+
+## Refactor
+- Es muss alles in Person rein, macht von der Logik sinn und auch damit Json vollständig ist
+
+# Wissen
+- DOM elemente sind JavaScript-Objekte die HTML elemente auf einer Webseite repräsentieren

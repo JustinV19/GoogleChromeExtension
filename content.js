@@ -13,10 +13,65 @@ const verkaufsNr = verkaufsnrRaw.replace("Verkauf #", "");
 
 //<-----------------------Cards---------------------------------->
 
+
 const rows = document.querySelectorAll("tr[data-article-id]");
 const cards = [];
 
+
 rows.forEach(row => {
+    let language;
+    let condition;
+    const expansionClass = row.querySelectorAll(".expansion-symbol");
+    const setKurzName = expansionClass[0].querySelector("span").textContent; // Setkürzel
+
+    switch(row.dataset.language){
+        case "1":
+            language = "EN";
+            break;
+        case "2":
+            language = "FR";
+            break;
+        case "3":
+            language = "DE";
+            break;
+        case "4":
+            language = "SP";
+            break;
+        case "5":
+            language = "IT";
+            break;
+        case "6":
+            language = "PT";
+            break;
+        default:
+            language = "unbekannt";
+    }
+
+    switch(row.dataset.condition){
+        case "1":
+            condition = "MT";
+            break;
+        case "2":
+            condition = "NM";
+            break;
+        case "3":
+            condition = "EX";
+            break;
+        case "4":
+            condition = "GD";
+            break;
+        case "5":
+            condition = "LP";
+            break;
+        case "6":
+            condition = "Pl";
+            break;
+        case "7":
+            condition = "PO";
+            break;
+        default:
+            condition = "unbekannt";
+    }
 
     cards.push({
         articleId: row.dataset.articleId,
@@ -26,17 +81,30 @@ rows.forEach(row => {
         expansion: row.dataset.expansionName,
         number: row.dataset.number,
         rarity: row.dataset.rarity,
-        condition: row.dataset.condition,
-        language: row.dataset.language,
+        condition: condition,
+        language: language,
         price: row.querySelector("td.price")?.textContent, // Wegen der Formatierung, lese ich es direkt aus der Zeile aus.
-        comment: row.dataset.comment
+        comment: row.dataset.comment,
+        setShortName: setKurzName
     })
 
 });
 
+//<----------------------Bestelldetails------------------------->
+const timeLineBox = document.querySelectorAll(".timeline-box"); // alle mit der Klasse wird in eine Node-liste gepackt 
+
+const bestellDatum = timeLineBox[2].querySelector("span").textContent;
+const leistungsDatum = timeLineBox[3].querySelector("span").textContent;
+
+const heute = new Date();
+const rechnungsDatum =
+    String(heute.getDate()).padStart(2, "0") + "." +
+    String(heute.getMonth() + 1).padStart(2, "0") + "." +       //padStart sagt das es (x stellen haben soll, mit was es aufgefüllt werden soll)
+    heute.getFullYear(); 
 //<----------------------Person--------------------------------->
 // ist ein Objekt
 const Person = {
+
 
     name: document.querySelector(".Name").textContent,
 
@@ -106,12 +174,16 @@ button.onclick = () => {
             umwandlung.href = url;
             umwandlung.download = name + ".json";
             umwandlung.click() // damit der download ausgelöst wird
+
         } else if (vergleichAuswahl === "PDF") {
             chrome.storage.local.set({
 
                 invoiceData: {
                     person: Person,
-                    verkaufsNr: verkaufsNr
+                    verkaufsNr: verkaufsNr,
+                    bestellDatum: bestellDatum,
+                    leistungsDatum: leistungsDatum,
+                    rechnungsDatum: rechnungsDatum
                 }
 
             },
@@ -123,7 +195,7 @@ button.onclick = () => {
 
                 }
             )
-        }else{
+        } else {
             alert("Es wurde keine Auswahl getroffen, in welchem Format es gespeichert werden soll");
             return;
         };

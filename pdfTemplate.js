@@ -77,6 +77,26 @@ chrome.storage.local.get(
             data.person.shippingAdress.country
         );
 
+        html = html.replaceAll(
+            "{{Bestelldatum}}",
+            data.bestellDatum
+        );
+
+        html = html.replaceAll(
+            "{{Leistungsdatum}}",
+            data.leistungsDatum
+        );
+        
+        html = html.replaceAll(
+            "{{Bestellnummer}}",
+            data.verkaufsNr
+        );
+
+        html = html.replaceAll(
+            "{{Rechnungsdatum}}",
+            data.rechnungsDatum
+        );
+
         document.body.innerHTML = html;
 
         // Tabelle befüllen Inventar
@@ -90,13 +110,14 @@ chrome.storage.local.get(
 
             row.innerHTML = `
                 <td>${card.amount}</td>
-                <td>${card.name}</td>
+                <td>${card.name} <br> ${card.setShortName}-${card.number} | ${card.language} | ${card.condition}</td>
                 <td>${card.price}</td>
             `;
 
             inventar.appendChild(row); // Die erstellten Elemente werden damit eingefügt und zwar an die geaddete ID
 
         });
+
 
         const row = document.createElement("tr");
 
@@ -105,7 +126,7 @@ chrome.storage.local.get(
                 ${data.person.shippingMethod.method} ${data.person.shippingMethod.weight} </br>
                 ${data.person.shippingMethod.shippingType}  ${data.person.shippingMethod.trusteeLabel} | ${data.person.shippingMethod.trusteeAvailable}
             </td>
-            <td><b> ${data.person.summary.shippingPrice} </b></td>            
+            <td> ${data.person.summary.shippingPrice}</td>            
         `;
         inventar.appendChild(row); // fügt das als letzte Element hinzu wie eine Liste
 
@@ -154,9 +175,9 @@ chrome.storage.local.get(
             }
         };
 
-        html2pdf().set(options).from(document.body).save().then(() => {
+        /*html2pdf().set(options).from(document.body).save().then(() => {
         //window.close();
-        });
+        });*/
 
     }
 
