@@ -30,9 +30,12 @@ chrome.storage.local.get(["gewerbeName", "strasse", "hausNr", "postleiZahl", "st
         "{{Umsatzsteuer-Nr}}",
         result.umsatzsteuerNr
     );
+
+    let extraBearbeitet = result.extra.replaceAll("\n","<br>");
+
     html = html.replaceAll(
         "{{Extra}}",
-        result.extra
+        extraBearbeitet
     );
    
     document.body.innerHTML = html // um die replaces wieder reinzusetzen
@@ -110,7 +113,7 @@ chrome.storage.local.get(
 
             row.innerHTML = `
                 <td>${card.amount}</td>
-                <td>${card.name} <br> ${card.setShortName}-${card.number} | ${card.language} | ${card.condition}</td>
+                <td>${card.name} <br> ${card.setShortName} | ${card.language} | ${card.condition}</td>
                 <td>${card.price}</td>
             `;
 

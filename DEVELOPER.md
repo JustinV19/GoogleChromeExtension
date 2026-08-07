@@ -47,10 +47,12 @@ Schritt 3 Rechnung in E-Rechnung umwandeln bzw direkt als E-Rechnung abspeichern
 - Button woanders platzieren und schöner
 
 ## Popupdesign
-- Extra größer eingaben mit zeilen umbruch ermöglichen, aber beschränkt
+- Extra größer eingaben mit zeilen umbruch ermöglichen, aber beschränkt|✅
+- Wenn man Enter für eine neue Zeile drückt soll behandelt werden |✅
+- Eventuell jede Zeile statt input ein Textarea machen. |✅
 
 ## Rechnungsdesign
-- Rechnungsnummer hinzufügen
+- Rechnungsnummer hinzufügen|✅
 - Rechnungsdatum hinzufügen|✅
 - Bestelldatum hinzufügen (an dem Tag an dem die Bestellung aufgegeben wurde)|✅
 - Leistungsdatum hinzufügen (Datum an dem die Lieferung angekommen ist)|✅
@@ -63,3 +65,5 @@ Schritt 3 Rechnung in E-Rechnung umwandeln bzw direkt als E-Rechnung abspeichern
 
 # Wissen
 - DOM elemente sind JavaScript-Objekte die HTML elemente auf einer Webseite repräsentieren
+- MD-Dateien vorschaue ist CTRL + Shift + V 
+- beim String zussammenfügen auf leerzeichen achten bzw aufpassen.

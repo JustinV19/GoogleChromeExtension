@@ -84,7 +84,7 @@ rows.forEach(row => {
         language: language,
         price: row.querySelector("td.price")?.textContent, // Wegen der Formatierung, lese ich es direkt aus der Zeile aus.
         comment: row.dataset.comment,
-        setShortName: setKurzName
+        setShortName: setKurzName + "-" + row.dataset.number 
     })
 
 });

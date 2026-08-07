@@ -5,15 +5,15 @@
 
 document.getElementById("save").addEventListener("click", () => {
     const selected = document.querySelector('input[name = "ausgabe"]:checked'); // radiobutton
-    const gewerbeName = document.querySelector('input[name = "gewerbeName"]');
-    const strasse = document.querySelector('input[name = "strasse"]');
-    const hausNr = document.querySelector('input[name = "hausNr"]');
-    const postleiZahl = document.querySelector('input[name = "postleiZahl"]');
-    const stadt = document.querySelector('input[name = "stadt"]');
-    const land = document.querySelector('input[name = "land"]');
-    const umsatzsteuerNr = document.querySelector('input[name = "umsatzsteuerNr"]');
-    const extra = document.querySelector('input[name = "extra"]');
-    const logo = document.querySelector('input[name = "logo"]');
+    const gewerbeName = document.querySelector('textarea[name = "gewerbeName"]');
+    const strasse = document.querySelector('textarea[name = "strasse"]');
+    const hausNr = document.querySelector('textarea[name = "hausNr"]');
+    const postleiZahl = document.querySelector('textarea[name = "postleiZahl"]');
+    const stadt = document.querySelector('textarea[name = "stadt"]');
+    const land = document.querySelector('textarea[name = "land"]');
+    const umsatzsteuerNr = document.querySelector('textarea[name = "umsatzsteuerNr"]');
+    const extra = document.querySelector('textarea[name = "extra"]');
+    const logo = document.querySelector('textarea[name = "logo"]');
 
     const checkValue = [gewerbeName,
         strasse,
@@ -62,14 +62,14 @@ chrome.storage.local.get(["ausgabe", "gewerbeName","strasse", "hausNr", "postlei
     }
 
     // Zuweisung
-    document.querySelector(`input[name="gewerbeName"]`).value = result.gewerbeName;
-    document.querySelector(`input[name="strasse"]`).value = result.strasse;
-    document.querySelector(`input[name="hausNr"]`).value = result.hausNr;
-    document.querySelector(`input[name="postleiZahl"]`).value = result.postleiZahl;
-    document.querySelector(`input[name="stadt"]`).value = result.stadt;
-    document.querySelector(`input[name="land"]`).value = result.land;
-    document.querySelector(`input[name="umsatzsteuerNr"]`).value = result.umsatzsteuerNr;
-    document.querySelector(`input[name="extra"]`).value = result.extra = result.extra || "";
-    document.querySelector(`input[name="logo"]`).value = result.logo || "";
+    document.querySelector(`textarea[name="gewerbeName"]`).value = result.gewerbeName;
+    document.querySelector(`textarea[name="strasse"]`).value = result.strasse;
+    document.querySelector(`textarea[name="hausNr"]`).value = result.hausNr;
+    document.querySelector(`textarea[name="postleiZahl"]`).value = result.postleiZahl;
+    document.querySelector(`textarea[name="stadt"]`).value = result.stadt;
+    document.querySelector(`textarea[name="land"]`).value = result.land;
+    document.querySelector(`textarea[name="umsatzsteuerNr"]`).value = result.umsatzsteuerNr;
+    document.querySelector(`textarea[name="extra"]`).value = result.extra = result.extra || "";
+    document.querySelector(`textarea[name="logo"]`).value = result.logo || "";
 
 });
