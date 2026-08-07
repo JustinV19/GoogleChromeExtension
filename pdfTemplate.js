@@ -54,47 +54,47 @@ chrome.storage.local.get(
 
         html = html.replaceAll(
             "{{order}}",
-            data.verkaufsNr
+            data.rechnung.verkaufsNr
         );
 
         html = html.replaceAll(
             "{{name}}",
-            data.person.name
+            data.rechnung.name
         );
 
         html = html.replaceAll(
             "{{street}}",
-            data.person.shippingAdress.street
+            data.rechnung.shippingAdress.street
         );
 
         html = html.replaceAll(
             "{{city}}",
-            data.person.shippingAdress.city
+            data.rechnung.shippingAdress.city
         );
 
         html = html.replaceAll(
             "{{country}}",
-            data.person.shippingAdress.country
+            data.rechnung.shippingAdress.country
         );
 
         html = html.replaceAll(
             "{{Bestelldatum}}",
-            data.bestellDatum
+            data.rechnung.bestellDatum
         );
 
         html = html.replaceAll(
             "{{Leistungsdatum}}",
-            data.leistungsDatum
+            data.rechnung.leistungsDatum
         );
         
         html = html.replaceAll(
             "{{Bestellnummer}}",
-            data.verkaufsNr
+            data.rechnung.bestellNummer
         );
 
         html = html.replaceAll(
             "{{Rechnungsdatum}}",
-            data.rechnungsDatum
+            data.rechnung.rechnungsDatum
         );
 
         document.body.innerHTML = html;
@@ -103,7 +103,7 @@ chrome.storage.local.get(
         const inventar =
             document.getElementById("inventarBody"); // Zeigt auf Tabellenbody mit der ID
 
-        data.person.cards.forEach(card => {
+        data.rechnung.cards.forEach(card => {
 
             const row =
                 document.createElement("tr");
@@ -123,10 +123,10 @@ chrome.storage.local.get(
 
         row.innerHTML = `
             <td colspan ="2">
-                ${data.person.shippingMethod.method} ${data.person.shippingMethod.weight} </br>
-                ${data.person.shippingMethod.shippingType}  ${data.person.shippingMethod.trusteeLabel} | ${data.person.shippingMethod.trusteeAvailable}
+                ${data.rechnung.shippingMethod.method} ${data.rechnung.shippingMethod.weight} </br>
+                ${data.rechnung.shippingMethod.shippingType}  ${data.rechnung.shippingMethod.trusteeLabel} | ${data.rechnung.shippingMethod.trusteeAvailable}
             </td>
-            <td> ${data.person.summary.shippingPrice}</td>            
+            <td> ${data.rechnung.summary.shippingPrice}</td>            
         `;
         inventar.appendChild(row); // fügt das als letzte Element hinzu wie eine Liste
 
@@ -139,7 +139,7 @@ chrome.storage.local.get(
             </b></td>
             <td><b>
                 0,00 €</br> 
-                ${data.person.summary.totalPrice} 
+                ${data.rechnung.summary.totalPrice} 
             </b></td>            
         `;
         row2.style.backgroundColor = "#f5f5f5";
@@ -152,14 +152,14 @@ chrome.storage.local.get(
                 Gesamt
             </b></td>
             <td><b>
-                ${data.person.summary.totalPrice} 
+                ${data.rechnung.summary.totalPrice} 
             </b></td>            
         `;
         row3.style.backgroundColor = "#d3d3d3";
         inventar.appendChild(row3);
 
 
-        let name = data.person.name.replaceAll(" ", "_") + "_" + data.verkaufsNr;
+        let name = data.rechnung.name.replaceAll(" ", "_") + "_" + data.bestellNummer;
 
         // Rechnung aus data.invoiceData erstellen
 

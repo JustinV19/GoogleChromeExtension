@@ -44,6 +44,8 @@ Schritt 3 Rechnung in E-Rechnung umwandeln bzw direkt als E-Rechnung abspeichern
 
 # Notizen
 
+- Button woanders platzieren und schöner
+
 ## Popupdesign
 - Extra größer eingaben mit zeilen umbruch ermöglichen, aber beschränkt
 

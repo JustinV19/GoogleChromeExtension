@@ -1,3 +1,5 @@
+
+////<-----------------------Button-Webseite---------------------->
 const button = document.createElement("button"); // erstellt ein Button für die Cardmarket webseite
 const target = document.querySelector(".w-100.d-grid") // holt das Element in dem ich dann mein Button einfüge
 // wenn es mehrere Klassen hat dann macht es ein. kein leerzeichen, auf der Seite steht ein Leerzeichen
@@ -5,15 +7,12 @@ const target = document.querySelector(".w-100.d-grid") // holt das Element in de
 button.innerText = "Rechnung";// Button name
 // fügt element hinzu
 
-//<-------------Globale_Variablen-------------------------------->
-const container = document.querySelector("#ShippingAddress");
-const element = container.querySelectorAll("*"); // alle Elemente im Shippingadress
+//<-------------Bestellnummer----------------------->
+
 const verkaufsnrRaw = document.querySelector("h1").textContent;
-const verkaufsNr = verkaufsnrRaw.replace("Verkauf #", "");
+const bestellNummer = verkaufsnrRaw.replace("Verkauf #", "");
 
 //<-----------------------Cards---------------------------------->
-
-
 const rows = document.querySelectorAll("tr[data-article-id]");
 const cards = [];
 
@@ -90,22 +89,24 @@ rows.forEach(row => {
 
 });
 
-//<----------------------Bestelldetails------------------------->
+//<----------------Bestelldetails-Container------------------------>
 const timeLineBox = document.querySelectorAll(".timeline-box"); // alle mit der Klasse wird in eine Node-liste gepackt 
-
-const bestellDatum = timeLineBox[2].querySelector("span").textContent;
-const leistungsDatum = timeLineBox[3].querySelector("span").textContent;
 
 const heute = new Date();
 const rechnungsDatum =
     String(heute.getDate()).padStart(2, "0") + "." +
     String(heute.getMonth() + 1).padStart(2, "0") + "." +       //padStart sagt das es (x stellen haben soll, mit was es aufgefüllt werden soll)
-    heute.getFullYear(); 
-//<----------------------Person--------------------------------->
+    heute.getFullYear();
+    //Alles Steckt in Rechnung drin für die JSON datei 
+
+//<----------------------Rechnung-Objekt--------------------------->
 // ist ein Objekt
-const Person = {
+const rechnung = {
 
-
+    bestellNummer: bestellNummer,
+    bestellDatum : timeLineBox[2].querySelector("span").textContent,
+    leistungsDatum: timeLineBox[3].querySelector("span").textContent,
+    rechnungsDatum: rechnungsDatum,
     name: document.querySelector(".Name").textContent,
 
     shippingAdress: {
@@ -139,19 +140,15 @@ const Person = {
 
     }
 
-
-
 };
 
 
-
-
-//<-------------------------Button---------------------------------->
+//<-------------------------Button-EventListener------------------------------>
 // erstellt eine JSON-Datei oder Pdf und downloaded die Datei, der Name wird richtig geparsed
 
 button.onclick = () => {
 
-    const file = new Blob([JSON.stringify(Person, null, 2)], {
+    const file = new Blob([JSON.stringify(rechnung, null, 2)], {
         type: "application/json"
     });
 
@@ -162,8 +159,8 @@ button.onclick = () => {
     const url = URL.createObjectURL(file); // daten liegen unsichbar im Ram und das ist ein Link zu den Daten damit es gedownloaded werden kann
 
     let elementName = document.getElementsByClassName("Name")[0];
-    let name = elementName.innerText + "_" + verkaufsNr;
-    name = name.replace(" ", "_");
+    let name = elementName.innerText + "_" + bestellNummer;
+    name = name.replaceAll(" ", "_");
 
     chrome.storage.local.get(["ausgabe"], (result) => {
         const vergleichAuswahl = result.ausgabe;
@@ -179,11 +176,7 @@ button.onclick = () => {
             chrome.storage.local.set({
 
                 invoiceData: {
-                    person: Person,
-                    verkaufsNr: verkaufsNr,
-                    bestellDatum: bestellDatum,
-                    leistungsDatum: leistungsDatum,
-                    rechnungsDatum: rechnungsDatum
+                    rechnung: rechnung,
                 }
 
             },
@@ -207,32 +200,6 @@ button.onclick = () => {
 
 
 }
-
-
-
-//<--------------------------Probe---------------------------------->
-/*button.onclick = () => {
-
-    chrome.storage.local.set({
-
-        invoiceData: {
-            person: Person,
-            verkaufsNr: verkaufsNr
-        }
-
-    },
-        () => {
-            window.open(
-                chrome.runtime.getURL("pdf.html"),
-                "_blank"
-            );
-        })
-
-
-
-
-
-};*/
 
 
 target.appendChild(button);
