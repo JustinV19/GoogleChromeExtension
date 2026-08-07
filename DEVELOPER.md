@@ -35,6 +35,7 @@ Die funktionen für den Popup, damit die Buttons und Textfelder funktionieren.
 - Erstellt eine HTML-Rechnung 
 - Wandelt die Rechnung in eine PDF um 
 - Kann aber auch die Rechnung in eine JSON-Datei umwandeln
+- Rechnung in CSV umwandeln
 
 # GoogleChromeExtension Ziele
 Für mein eigenes Gewerbe um Automatisch Rechnungen zu erstellen
