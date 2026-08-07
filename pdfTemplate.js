@@ -54,7 +54,7 @@ chrome.storage.local.get(
 
         html = html.replaceAll(
             "{{order}}",
-            data.rechnung.verkaufsNr
+            data.rechnung.bestellNummer
         );
 
         html = html.replaceAll(

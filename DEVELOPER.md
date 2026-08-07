@@ -59,7 +59,7 @@ Schritt 3 Rechnung in E-Rechnung umwandeln bzw direkt als E-Rechnung abspeichern
 - Zustand hinzufügen|✅
 
 ## Refactor
-- Es muss alles in Person rein, macht von der Logik sinn und auch damit Json vollständig ist
+- Es muss alles in Rechnung rein, macht von der Logik sinn und auch damit Json vollständig ist |✅
 
 # Wissen
 - DOM elemente sind JavaScript-Objekte die HTML elemente auf einer Webseite repräsentieren
